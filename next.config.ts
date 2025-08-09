@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // No necesitas experimental.appDir en Next.js 14
+}
 
-export default nextConfig;
+module.exports = nextConfig
