@@ -160,6 +160,9 @@ Para probar la aplicación:
 6. Ver historial de pedidos
 <img width="1773" height="1086" alt="image" src="https://github.com/user-attachments/assets/b5d172af-2cbf-4445-8440-a4b51ffdf6eb" />
 
+## 📁 Estructura del Proyecto
+<img width="500" height="1033" alt="image" src="https://github.com/user-attachments/assets/28af2070-9e41-4387-a6d9-e8baaa2fdeec" />
+<img width="332" height="928" alt="image" src="https://github.com/user-attachments/assets/96282d8b-551d-4c8e-85e6-766f871d662b" />
 
 ## 📝 Notas de Desarrollo
 
