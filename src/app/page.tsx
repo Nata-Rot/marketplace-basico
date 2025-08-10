@@ -1,5 +1,3 @@
-// src/app/page.tsx
-
 import Link from 'next/link'
 import { BuildingStorefrontIcon, ShoppingCartIcon, UserGroupIcon } from '@heroicons/react/24/outline'
 

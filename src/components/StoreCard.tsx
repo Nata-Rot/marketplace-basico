@@ -1,5 +1,3 @@
-// src/components/StoreCard.tsx
-
 import Link from 'next/link'
 import { BuildingStorefrontIcon } from '@heroicons/react/24/outline'
 

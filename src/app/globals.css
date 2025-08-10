@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos personalizados adicionales */
 html {
   font-family: system-ui, sans-serif;
 }

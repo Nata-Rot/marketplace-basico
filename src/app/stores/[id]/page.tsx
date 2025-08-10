@@ -1,5 +1,3 @@
-// src/app/stores/[id]/page.tsx
-
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -74,10 +72,10 @@ export default function StorePage({ params }: { params: { id: string } }) {
           quantity: 1,
         }),
       })
-
+      //Se actuliza el stock una vez se relice la compra
       if (response.ok) {
         toast.success('¡Compra realizada exitosamente!')
-        fetchStore() // Actualizar stock
+        fetchStore() 
       } else {
         const data = await response.json()
         toast.error(data.error || 'Error al realizar la compra')

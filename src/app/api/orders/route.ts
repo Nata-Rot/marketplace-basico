@@ -1,5 +1,3 @@
-// src/app/api/orders/route.ts
-
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
@@ -20,7 +18,7 @@ export async function GET() {
     let orders
 
     if (session.user.userType === 'BUSINESS') {
-      // Business ve los pedidos de sus tiendas
+      // Business ve los pedidos de sus tiendas //
       orders = await prisma.order.findMany({
         where: {
           store: {
@@ -37,7 +35,7 @@ export async function GET() {
         orderBy: { createdAt: 'desc' },
       })
     } else {
-      // Cliente ve sus propios pedidos
+      // Cliente ve sus propios pedidos //
       orders = await prisma.order.findMany({
         where: {
           clientId: session.user.id,
@@ -80,7 +78,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const { productId, quantity } = orderSchema.parse(body)
 
-    // Obtener producto y tienda
+    // Obtiene producto y tienda //
     const product = await prisma.product.findUnique({
       where: { id: productId },
       include: { store: true },
@@ -102,7 +100,7 @@ export async function POST(req: NextRequest) {
 
     const total = product.price * quantity
 
-    // Crear pedido y actualizar stock
+    // Crea el pedido y actualizar stock //
     const [order] = await prisma.$transaction([
       prisma.order.create({
         data: {

@@ -1,6 +1,3 @@
-
-// src/app/stores/page.tsx
-
 import Link from 'next/link'
 import StoreCard from '@/components/StoreCard'
 import { prisma } from '@/lib/db'

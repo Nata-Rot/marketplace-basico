@@ -1,5 +1,3 @@
-// src/app/api/products/route.ts
-
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
@@ -20,7 +18,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const { name, description, price, stock, storeId } = productSchema.parse(body)
 
-    // Verificar que la tienda pertenece al usuario
+    // Verifica que la tienda pertenece al usuario //
     const store = await prisma.store.findFirst({
       where: {
         id: storeId,

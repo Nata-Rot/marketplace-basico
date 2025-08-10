@@ -1,4 +1,3 @@
-// src/components/ProductCard.tsx
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 interface Product {

@@ -1,5 +1,3 @@
-// src/app/api/auth/register/route.ts
-
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/db'
@@ -10,7 +8,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const { name, email, password, userType } = registerSchema.parse(body)
 
-    // Verificar si el usuario ya existe
+    // Verifica o valida si el usuario ya existe //
     const existingUser = await prisma.user.findUnique({
       where: { email },
     })
@@ -22,10 +20,10 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Encriptar contraseña
+    // Encripta contraseña //
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    // Crear usuario
+    // Crea el usuario //
     const user = await prisma.user.create({
       data: {
         name,

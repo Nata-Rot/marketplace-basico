@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 async function main() {
   console.log('🌱 Iniciando seed de la base de datos...')
 
-  // Limpiar datos existentes
+  // Limpia datos existentes //
   await prisma.order.deleteMany()
   await prisma.product.deleteMany()
   await prisma.store.deleteMany()
@@ -14,7 +14,7 @@ async function main() {
   await prisma.session.deleteMany()
   await prisma.user.deleteMany()
 
-  // Crear usuarios de prueba
+  // Crea usuarios de prueba //
   const hashedPassword = await bcrypt.hash('123456', 10)
 
   const businessUser = await prisma.user.create({
@@ -35,7 +35,7 @@ async function main() {
     },
   })
 
-  // Crear usuarios adicionales
+  // Crea usuarios adicionales //
   const businessUser2 = await prisma.user.create({
     data: {
       name: 'Carlos Rodríguez',
@@ -54,7 +54,7 @@ async function main() {
     },
   })
 
-  // Crear tiendas
+  // Crea tiendas //
   const techStore = await prisma.store.create({
     data: {
       name: 'TechnoShop',
@@ -79,7 +79,7 @@ async function main() {
     },
   })
 
-  // Crear productos para TechnoShop
+  // Crea productos para la tieda TechnoShop //
   await prisma.product.createMany({
     data: [
       {
@@ -113,7 +113,7 @@ async function main() {
     ],
   })
 
-  // Crear productos para Moda Elegante
+  // Crea productos para la tienda Moda Elegante //
   await prisma.product.createMany({
     data: [
       {
@@ -147,7 +147,7 @@ async function main() {
     ],
   })
 
-  // Crear productos para Hogar & Decoración
+  // Crea productos para la tienda Hogar & Decoración //
   await prisma.product.createMany({
     data: [
       {
@@ -181,7 +181,7 @@ async function main() {
     ],
   })
 
-  // Obtener todos los productos con sus IDs
+  // Obtiene todos los productos con sus IDs //
   const allProducts = await prisma.product.findMany({
     select: {
       id: true,
@@ -189,7 +189,7 @@ async function main() {
     }
   })
 
-  // Función para encontrar ID de producto por nombre con tipado explícito
+  // Función para encontrar ID de producto por nombre con tipado explícito //
   const getProductIdByName = (name: string): string => {
     const product = allProducts.find((p: { name: string; id: string }) => p.name === name)
     if (!product) {
@@ -198,7 +198,7 @@ async function main() {
     return product.id
   }
 
-  // Crear pedidos de ejemplo con tipado seguro
+  // Crea pedidos de ejemplo con tipado seguro //
   await prisma.order.createMany({
     data: [
       {
