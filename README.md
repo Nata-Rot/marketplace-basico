@@ -4,7 +4,8 @@ Aplicación monolítica en Next.js que simula un pequeño marketplace con dos
 tipos de usuarios: Business y Cliente.
 La aplicación debe permitir a los negocios crear tiendas con productos, y a los clientes
 navegar, registrarse y realizar compras.
-<img width="1598" height="1075" alt="image" src="https://github.com/user-attachments/assets/58ab97ec-14af-44b7-a3a7-bc37a26f656e" />
+<img width="1857" height="1131" alt="image" src="https://github.com/user-attachments/assets/fd925b40-8399-4483-a4a4-42b84ab02b00" />
+
 
 ## 🛠️ Tecnologías
 
