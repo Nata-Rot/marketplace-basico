@@ -8,8 +8,17 @@ import { Toaster } from 'react-hot-toast'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Marketplace Básico',
-  description: 'Un marketplace simple para negocios y clientes',
+  title: 'Marketplace',
+  description: 'Un marketplace simple para negocios y clientes locales',
+  icons: {
+    icon: '/icon.png',        
+    shortcut: '/icon.png',
+    apple: '/icon.png',      
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/icon.png',       
+    },
+  },
 }
 
 export default function RootLayout({
