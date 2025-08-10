@@ -15,11 +15,11 @@ async function main() {
   await prisma.user.deleteMany()
 
   // Crea usuarios de prueba //
-  const hashedPassword = await bcrypt.hash('123456', 10)
+  const hashedPassword = await bcrypt.hash('Market2025#', 10)
 
   const businessUser = await prisma.user.create({
     data: {
-      name: 'Juan Pérez',
+      name: 'Natali Pacheco',
       email: 'business@test.com',
       password: hashedPassword,
       userType: 'BUSINESS',

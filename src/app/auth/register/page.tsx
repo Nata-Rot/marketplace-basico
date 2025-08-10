@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
@@ -12,11 +12,55 @@ export default function RegisterPage() {
     password: '',
     userType: 'CLIENT' as 'BUSINESS' | 'CLIENT',
   })
+  const [passwordStrength, setPasswordStrength] = useState({
+    valid: false,
+    message: 'La contraseña debe tener 8+ caracteres, mayúsculas, números y símbolos'
+  })
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
+  useEffect(() => {
+    const validatePassword = (password: string) => {
+      const hasMinLength = password.length >= 8
+      const hasUpperCase = /[A-Z]/.test(password)
+      const hasNumbers = /\d/.test(password)
+      const hasSpecialChars = /[!@#$%^&*(),.?":{}|<>]/.test(password)
+
+      const isValid = hasMinLength && hasUpperCase && hasNumbers && hasSpecialChars
+      let message = ''
+
+      if (!isValid) {
+        const missing = []
+        if (!hasMinLength) missing.push('8+ caracteres')
+        if (!hasUpperCase) missing.push('mayúscula')
+        if (!hasNumbers) missing.push('número')
+        if (!hasSpecialChars) missing.push('símbolo')
+        message = `Falta: ${missing.join(', ')}`
+      } else {
+        message = '✓ Contraseña segura'
+      }
+
+      setPasswordStrength({ valid: isValid, message })
+    }
+
+    if (formData.password) {
+      validatePassword(formData.password)
+    } else {
+      setPasswordStrength({
+        valid: false,
+        message: 'La contraseña debe tener 8+ caracteres, mayúsculas, números y símbolos'
+      })
+    }
+  }, [formData.password])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    if (!passwordStrength.valid) {
+      toast.error('La contraseña no cumple con los requisitos de seguridad')
+      return
+    }
+
     setIsLoading(true)
 
     try {
@@ -112,9 +156,12 @@ export default function RegisterPage() {
                 required
                 value={formData.password}
                 onChange={handleChange}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="Mínimo 6 caracteres"
+                className={`mt-1 block w-full px-3 py-2 border ${passwordStrength.valid ? 'border-green-500' : 'border-gray-300'} rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500`}
+                placeholder="Escribe tu contraseña segura"
               />
+              <p className={`mt-1 text-xs ${passwordStrength.valid ? 'text-green-600' : 'text-gray-500'}`}>
+                {passwordStrength.message}
+              </p>
             </div>
 
             <div>
@@ -137,7 +184,7 @@ export default function RegisterPage() {
           <div>
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || !passwordStrength.valid}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? 'Creando cuenta...' : 'Crear cuenta'}

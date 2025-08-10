@@ -104,17 +104,7 @@ export default function LoginPage() {
               <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-gray-50 text-gray-500">Usuarios de prueba</span>
-            </div>
-          </div>
-          <div className="mt-4 grid grid-cols-1 gap-3">
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-blue-900">Business</p>
-              <p className="text-xs text-blue-700">business@test.com / 123456</p>
-            </div>
-            <div className="bg-green-50 p-3 rounded-lg">
-              <p className="text-sm font-medium text-green-900">Cliente</p>
-              <p className="text-xs text-green-700">cliente@test.com / 123456</p>
+              <span className="px-2 bg-gray-50 text-gray-500">Business - Cliente</span>
             </div>
           </div>
         </div>
