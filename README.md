@@ -54,8 +54,28 @@ npx prisma db push
 
 # (Opcional) Cargar datos de prueba
 npx prisma db seed
-```
 
+# Reiniciar la aplicación
+npm run dev
+
+
+########### Si no funciona, segunda opción ###########
+# Borrar la base de datos
+rm -f prisma/dev.db
+
+# Aplicar el esquema Prisma
+npx prisma db push
+
+# Opcional: Ejecutar el seed para datos de prueba
+npx prisma db seed
+
+# O validar con Prisma Studio
+npx prisma studio
+
+# Reiniciar la aplicación
+npm run dev
+```
+# 
 ### 5. Ejecutar el proyecto
 
 ```bash
