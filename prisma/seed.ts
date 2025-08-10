@@ -1,5 +1,3 @@
-// prisma/seed.ts
-
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
@@ -183,16 +181,31 @@ async function main() {
     ],
   })
 
-  // Crear algunos pedidos de ejemplo
-  const products = await prisma.product.findMany()
+  // Obtener todos los productos con sus IDs
+  const allProducts = await prisma.product.findMany({
+    select: {
+      id: true,
+      name: true
+    }
+  })
 
+  // Función para encontrar ID de producto por nombre con tipado explícito
+  const getProductIdByName = (name: string): string => {
+    const product = allProducts.find((p: { name: string; id: string }) => p.name === name)
+    if (!product) {
+      throw new Error(`Producto ${name} no encontrado`)
+    }
+    return product.id
+  }
+
+  // Crear pedidos de ejemplo con tipado seguro
   await prisma.order.createMany({
     data: [
       {
         quantity: 1,
         total: 249.99,
         clientId: clientUser.id,
-        productId: products.find((p: { name: string }) => p.name === 'AirPods Pro')!.id,
+        productId: getProductIdByName('AirPods Pro'),
         storeId: techStore.id,
         status: 'CONFIRMED',
       },
@@ -200,7 +213,7 @@ async function main() {
         quantity: 2,
         total: 179.98,
         clientId: clientUser2.id,
-        productId: products.find((p: { name: string }) => p.name === 'Vestido de Verano')!.id,
+        productId: getProductIdByName('Vestido de Verano'),
         storeId: fashionStore.id,
         status: 'PENDING',
       },
@@ -208,20 +221,20 @@ async function main() {
         quantity: 1,
         total: 199.99,
         clientId: clientUser.id,
-        productId: products.find((p: { name: string }) => p.name === 'Mesa de Centro')!.id,
+        productId: getProductIdByName('Mesa de Centro'),
         storeId: homeStore.id,
         status: 'SHIPPED',
       },
-    ],
+    ]
   })
 
   console.log('✅ Seed completado exitosamente!')
   console.log('')
   console.log('👥 Usuarios creados:')
-  console.log('📧 Business: business@test.com / 123456')
-  console.log('📧 Cliente: cliente@test.com / 123456')
-  console.log('📧 Business 2: business2@test.com / 123456')
-  console.log('📧 Cliente 2: cliente2@test.com / 123456')
+  console.log(`📧 Business: ${businessUser.email} / 123456`)
+  console.log(`📧 Cliente: ${clientUser.email} / 123456`)
+  console.log(`📧 Business 2: ${businessUser2.email} / 123456`)
+  console.log(`📧 Cliente 2: ${clientUser2.email} / 123456`)
   console.log('')
   console.log('🏪 Tiendas creadas: 3')
   console.log('📦 Productos creados: 12')

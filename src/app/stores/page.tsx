@@ -1,10 +1,28 @@
+
 // src/app/stores/page.tsx
 
 import Link from 'next/link'
 import StoreCard from '@/components/StoreCard'
 import { prisma } from '@/lib/db'
 
-async function getStores() {
+interface StoreWithDetails {
+  id: string
+  name: string
+  description: string | null
+  image: string | null
+  ownerId: string
+  createdAt: Date
+  updatedAt: Date
+  owner: {
+    name: string | null
+    email: string
+  }
+  _count: {
+    products: number
+  }
+}
+
+async function getStores(): Promise<StoreWithDetails[]> {
   return await prisma.store.findMany({
     include: {
       owner: {
@@ -47,7 +65,7 @@ export default async function StoresPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {stores.map((store) => (
+          {stores.map((store: StoreWithDetails) => (
             <StoreCard key={store.id} store={store} />
           ))}
         </div>
