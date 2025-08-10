@@ -144,8 +144,10 @@ Para probar la aplicación:
 
 2. Crear una tienda
 <img width="1795" height="1088" alt="image" src="https://github.com/user-attachments/assets/4f649603-e5cd-466f-a88b-54342b64c836" />
+
 3. Añadir productos a la tienda
 <img width="1762" height="1012" alt="image" src="https://github.com/user-attachments/assets/d2a062bd-067a-4d70-9612-81ef10b1a9e0" />
+
 4. Ver pedidos en el dashboard
 <img width="1737" height="1103" alt="image" src="https://github.com/user-attachments/assets/d7aa9a8c-43c9-4057-8e53-39b06f6bf7f9" />
 
@@ -153,11 +155,15 @@ Para probar la aplicación:
 1. Navegar tiendas sin registrarse
 <img width="1663" height="835" alt="image" src="https://github.com/user-attachments/assets/ee720140-7c15-4709-b9a2-019d161ff1d5" />
 <img width="1673" height="1016" alt="image" src="https://github.com/user-attachments/assets/7d66b611-6485-46eb-95ea-239e376fe5d4" />
+
 2. Registrarse para poder comprar
-<img width="1763" height="910" alt="image" src="https://github.com/user-attachments/assets/c14a096e-3ca4-4993-9ae0-c520812eccc3" />
+<img width="1767" height="966" alt="image" src="https://github.com/user-attachments/assets/f8264f44-5539-4174-b64c-ef5fe018e7e6" />
+<img width="1681" height="1042" alt="image" src="https://github.com/user-attachments/assets/841206bd-4173-44bf-96a6-661a967a5177" />
+
 3. Realizar una compra
 <img width="1801" height="1037" alt="image" src="https://github.com/user-attachments/assets/2bd8fd14-4fa4-4fa4-8d7c-a971a2a6d5e8" />
-6. Ver historial de pedidos
+
+4. Ver historial de pedidos
 <img width="1773" height="1086" alt="image" src="https://github.com/user-attachments/assets/b5d172af-2cbf-4445-8440-a4b51ffdf6eb" />
 
 ## 📁 Estructura del Proyecto
