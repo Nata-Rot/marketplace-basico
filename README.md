@@ -100,6 +100,12 @@ La aplicación estará disponible en http://localhost:3000
 
 ## 🗄️ Modelo de Base de Datos
 
+### Validación base de datos
+```bash
+npx prisma studio
+http://localhost:5555/
+```
+
 ### Tablas Principales
 
 - **User**: Usuarios (Business y Cliente)
