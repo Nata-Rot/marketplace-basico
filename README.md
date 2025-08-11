@@ -33,7 +33,7 @@ npm install
 
 ### 3. Configurar variables de entorno
 
-Crear archivo `.env` o tambien `.env.local`:
+Crear archivo  `.env.local` `.env`:
 
 ```env
 # Base de datos
